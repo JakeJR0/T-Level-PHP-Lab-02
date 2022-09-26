@@ -1,5 +1,6 @@
 <?php
 include 'assets/php/site_info.php';
+include 'assets/php/calculations.php';
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +13,8 @@ include 'assets/php/site_info.php';
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     </head>
     <body>
+        <script src="assets/js/calculator.js"></script>
+
         <div class="text-center" style="margin-top: 50px;">
             <h1 class="display-4"><?php echo SITE_NAME; ?></h1>
             <lead><?php echo SITE_DESCRIPTION; ?></lead>
@@ -21,7 +24,6 @@ include 'assets/php/site_info.php';
                 <row></row>
 
             <?php 
-            $operators = array("Add", "Subtract", "Multiply", "Divide", "Modulus", "Power", "Square Root");
 
             if (isset($_POST["number_1"])) {
                 $number_1 = $_POST["number_1"];
@@ -41,48 +43,17 @@ include 'assets/php/site_info.php';
             } else {
                 $operator = null;
             }
-
-            function calculate($number_1, $number_2, $operator) {
-                switch($operator) {
-                    case "add":
-                        $result = $number_1 + $number_2;
-                        break;
-                    case "subtract":
-                        $result = $number_1 - $number_2;
-                        break;
-                    case "multiply":
-                        $result = $number_1 * $number_2;
-                        break;
-                    case "divide":
-                        $result = $number_1 / $number_2;
-                        break;
-                    case "modulus":
-                        $result = $number_1 % $number_2;
-                        break;
-                    case "power":
-                        $result = $number_1 ** $number_2;
-                        break;
-                    case "square_root" || "square root":
-                        $result = sqrt($number_1);
-                        break;
-                    default:
-                        $result = null;
-                    
-                }
-
-                return $result;
-            }
             
             ?>
 
             <form method="POST" action="">
                 <div class="mb-3">
                     <label class="form-label">Number 1</label>
-                    <input class="form-control" type="number" name="number_1" <?php if($number_1 != null) { echo 'value="'.$number_1.'"'; } ?>  placeholder="Number 1">
+                    <input id="number_1" class="form-control" type="number" name="number_1" <?php if($number_1 != null) { echo 'value="'.$number_1.'"'; } ?>  placeholder="Number 1">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Number 2</label>
-                    <input class="form-control" type="number" name="number_2" <?php if($number_2 != null) { echo 'value="'.$number_2.'"'; } ?> placeholder="Number 2">
+                    <input id="number_2" class="form-control" type="number" name="number_2" <?php if($number_2 != null) { echo 'value="'.$number_2.'"'; } ?> placeholder="Number 2">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Operator</label>
@@ -100,12 +71,13 @@ include 'assets/php/site_info.php';
                 </div>
                 <div class="text-center" style="margin-top: 20px;">
                     <button type="submit" class="btn btn-primary">Submit</button>
+                    <button class="btn btn-danger" onclick="resetCalculator()">Reset</button>
                 </div>
                 
                 <div class="text-center" style="margin-top: 20px;">
                     <div class="mb-3">
                         <label class="form-label">Result</label>
-                        <input class="form-control text-center" readonly type="text" value="<?php echo calculate($number_1, $number_2, $operator); ?>">
+                        <input class="form-control text-center" id="result" readonly type="text" value="<?php echo calculate($number_1, $number_2, $operator); ?>">
                     </div>
                 </div>
             </form>
