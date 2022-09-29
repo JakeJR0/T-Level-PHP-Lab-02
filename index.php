@@ -25,6 +25,10 @@ include 'assets/php/calculations.php';
         <meta property="og:url" content="<?php echo SITE_URL; ?>">
         <meta property="og:description" content="<?php echo SITE_DESCRIPTION; ?>">
         <meta property="og:title" content="<?php echo SITE_NAME; ?>">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+        <!-- CSS -->
+        <link rel="stylesheet" href="assets/css/styles.css">
     </head>
     <body>
         <div class="text-center" style="margin-top: 50px;">
