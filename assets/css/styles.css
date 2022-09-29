@@ -1,14 +1,15 @@
 .table-holder {
-    margin: auto;
-    margin-top: 60px;
-    margin-bottom: 30px;
-    width: 50%;
-    text-align: center;
+    margin: auto; /* centers the table */
+    margin-top: 60px; /* adds some space above the table */
+    margin-bottom: 30px; /* adds some space below the table */
+    width: 50%; /* sets the width of the table */
+    text-align: center; /* centers the text in the table */
 }
 
-@media screen and (max-width: 768px) {
+/* Checks if the screen is smaller than 768px */
+@media screen and (max-width: 768px) { 
     .table-holder {
-        width: 100%;
-        padding: 12px;
+        width: 100%; /* sets the width of the table to 100% */
+        padding: 12px; /* adds padding to the table */
     }
 }
