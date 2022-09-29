@@ -1,0 +1,14 @@
+.table-holder {
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    width: 50%;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .table-holder {
+        width: 100%;
+        padding: 12px;
+    }
+}
